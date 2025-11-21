@@ -1,0 +1,144 @@
+-- 1. Total Revenue
+SELECT SUM(quantity  price) AS total_revenue FROM sales;
+
+-- 2. Total Orders
+SELECT COUNT(order_id) AS total_orders FROM sales;
+
+-- 3. Sales by Region
+SELECT region, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY region
+ORDER BY revenue DESC;
+
+-- 4. Sales by Category
+SELECT category, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY category
+ORDER BY revenue DESC;
+
+-- 5. Top 10 Customers
+SELECT customer_id, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY customer_id
+ORDER BY revenue DESC
+LIMIT 10;
+
+-- 6. Top Selling Products
+SELECT product_name, SUM(quantity) AS units_sold
+FROM sales
+GROUP BY product_name
+ORDER BY units_sold DESC
+LIMIT 10;
+
+-- 7. Average Order Value
+SELECT SUM(quantity  price)  COUNT(order_id) AS avg_order_value
+FROM sales;
+
+-- 8. Monthly Sales Trend
+SELECT DATE_FORMAT(order_date, %Y-%m) AS month,
+       SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY month
+ORDER BY month;
+
+-- 9. Daily Sales Trend
+SELECT order_date, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY order_date
+ORDER BY order_date;
+
+-- 10. Customer Purchase Frequency
+SELECT customer_id, COUNT(order_id) AS frequency
+FROM sales
+GROUP BY customer_id
+ORDER BY frequency DESC;
+
+-- 11. Recent Customers (Last 30 Days)
+SELECT 
+FROM sales
+WHERE order_date = DATE_SUB(CURDATE(), INTERVAL 30 DAY);
+
+-- 12. High-value Customers (Monetary  50k)
+SELECT customer_id, SUM(quantity  price) AS monetary
+FROM sales
+GROUP BY customer_id
+HAVING monetary  50000
+ORDER BY monetary DESC;
+
+-- 13. Sales by Subcategory
+SELECT sub_category, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY sub_category
+ORDER BY revenue DESC;
+
+-- 14. Region-wise Order Count
+SELECT region, COUNT(order_id) AS total_orders
+FROM sales
+GROUP BY region;
+
+-- 15. Best-Selling Category by Region
+SELECT region, category, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY region, category
+ORDER BY region, revenue DESC;
+
+-- 16. Revenue Contribution %
+SELECT category,
+       ROUND(SUM(quantity  price)  100 
+       (SELECT SUM(quantity  price) FROM sales), 2) AS percentage_contribution
+FROM sales
+GROUP BY category;
+
+-- 17. Customer RFM (Recency)
+SELECT customer_id,
+       MAX(order_date) AS last_purchase_date
+FROM sales
+GROUP BY customer_id;
+
+-- 18. RFM Combined
+SELECT customer_id,
+       DATEDIFF(CURDATE(), MAX(order_date)) AS recency,
+       COUNT(order_id) AS frequency,
+       SUM(quantity  price) AS monetary
+FROM sales
+GROUP BY customer_id
+ORDER BY monetary DESC;
+
+-- 19. Highest Revenue Day
+SELECT order_date, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY order_date
+ORDER BY revenue DESC
+LIMIT 1;
+
+-- 20. Highest Revenue Product
+SELECT product_name, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY product_name
+ORDER BY revenue DESC
+LIMIT 1;
+
+-- 21. Most Ordered Category
+SELECT category, COUNT(order_id) AS order_count
+FROM sales
+GROUP BY category
+ORDER BY order_count DESC;
+
+-- 22. Average Quantity Per Order
+SELECT AVG(quantity) AS avg_quantity FROM sales;
+
+-- 23. Return Customer %
+SELECT
+    (SELECT COUNT(DISTINCT customer_id) FROM sales GROUP BY customer_id HAVING COUNT(order_id)1)
+    
+    (SELECT COUNT(DISTINCT customer_id) FROM sales)  100
+    AS repeat_customer_percentage;
+
+-- 24. Revenue Per Customer
+SELECT customer_id, SUM(quantity  price) AS revenue
+FROM sales
+GROUP BY customer_id
+ORDER BY revenue DESC;
+
+-- 25. Profit Estimation (Assume 35% margin)
+SELECT SUM(quantity  price  0.35) AS estimated_profit FROM sales;

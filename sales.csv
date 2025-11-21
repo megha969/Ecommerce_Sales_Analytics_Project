@@ -1,0 +1,7 @@
+OrderID,OrderDate,CustomerID,CustomerName,Product,Category,Quantity,UnitPrice
+1001,2024-01-05,501,Amit Shah,Laptop,Electronics,1,55000
+1002,2024-01-06,502,Priya Verma,Headphones,Electronics,2,1500
+1003,2024-01-06,501,Amit Shah,Laptop,Electronics,1,55000
+1004,2024-01-07,503,Rohit Kumar,Mobile,Electronics,1,22000
+1005,2024-01-07,504,Sneha Rao,Shoes,Fashion,3,900
+1006,2024-01-08,505,Manish Singh,Laptop,Electronics,1,55000
