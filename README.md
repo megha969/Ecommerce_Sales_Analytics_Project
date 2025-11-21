@@ -17,3 +17,4 @@ Generating Insights & Recommendations
 ![SQL](https://img.shields.io/badge/SQL-MySQL%20%7C%20PostgreSQL-orange)
 ![PowerBI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Dashboard](images/dashboard_overview.png)
