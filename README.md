@@ -13,3 +13,7 @@ Building a Power BI Dashboard
 Generating Insights & Recommendations
 <img width="1024" height="1536" alt="image" src="https://github.com/user-attachments/assets/a447fd08-bbc4-4c2a-9888-bb24345e6e1d" />
 
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![SQL](https://img.shields.io/badge/SQL-MySQL%20%7C%20PostgreSQL-orange)
+![PowerBI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
